@@ -1,0 +1,255 @@
+/* ------------------------- */
+/* Estilos Generales         */
+/* ------------------------- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fdf6ec; /* color cuerpo*/
+  color: #4b4044;
+  padding-top: 160px;
+}
+
+/* ------------------------- */
+/* Encabezado                */
+/* ------------------------- */
+header {
+  background: linear-gradient(to right, #246840, #e1c88a); /* Verde UAEM más suave a dorado más claro */
+  text-align: center;
+  padding: 3.5rem 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(120, 100, 110, 0.1);
+}
+
+header h1, header p {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.12em;  /* más espacio entre letras */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #f9f6f0; /* blanco crema */
+  /* sin text-shadow */
+}
+
+header p {
+  color: #faf8f4; /* blanco crema más suave */
+  margin-top: 0.5rem;
+  font-weight: 400;
+  font-size: 1.1rem;
+  /* sin text-shadow */
+}
+
+
+/* ------------------------- */
+/* Avatar Potro (izquierda)  */
+/* ------------------------- */
+.avatar-container {
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 140px;
+  height: 140px;
+  z-index: 12;
+}
+
+.avatar-potro {
+  width: 100%;
+  animation: peek-in 4s ease-in-out infinite;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+  border-radius: 20px;
+}
+
+/* ------------------------- */
+/* Avatar Potricia (derecha) */
+/* ------------------------- */
+.avatar-potricia-container {
+  position: absolute;
+  top: 0;
+  right: -20px;
+  width: 140px;
+  height: 140px;
+  z-index: 12;
+}
+
+.avatar-potricia {
+  width: 100%;
+  animation: peek-in-right 4s ease-in-out infinite;
+  filter: drop-shadow(0 3px 3px rgba(0,0,0,0.1));
+  border-radius: 20px;
+}
+
+/* ------------------------- */
+/* Animación movimiento Potro (izquierda) */
+/* ------------------------- */
+@keyframes peek-in {
+  0%, 100% {
+    transform: translateX(-40%);
+  }
+  50% {
+    transform: translateX(20%);
+  }
+}
+
+/* ------------------------- */
+/* Animación movimiento Potricia (derecha) */
+/* ------------------------- */
+@keyframes peek-in-right {
+  0%, 100% {
+    transform: translateX(40%);
+  }
+  50% {
+    transform: translateX(-20%);
+  }
+}
+
+/* ------------------------- */
+/* Orbitador (burbuja)       */
+/* ------------------------- */
+.orbit-container {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 90px;
+  height: 90px;
+  animation: orbit 6s linear infinite;
+  transform-origin: center center;
+  z-index: 15;
+}
+
+/* ------------------------- */
+/* Burbuja de texto          */
+/* ------------------------- */
+.speech-bubble {
+  position: absolute;
+  top: 0;
+  left: 95px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #7a506d;
+  padding: 0.6rem 1.2rem;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: normal;
+  max-width: 180px;
+  box-shadow: 0 4px 8px rgba(122, 80, 109, 0.15);
+  line-height: 1.3;
+  user-select: none;
+  z-index: 16;
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -12px;
+  margin-top: -7px;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-right-color: rgba(255, 255, 255, 0.95);
+}
+
+/* ------------------------- */
+/* Animación orbitador burbuja*/
+/* ------------------------- */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ------------------------- */
+/* Imágenes cayendo          */
+/* ------------------------- */
+.falling-image {
+  position: fixed;
+  width: 180px;
+  height: auto;
+  border: 3px solid white;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5); /* sombra más fuerte */
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.4)); /* sombra extra */
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  opacity: 0;
+  top: -180px;
+  z-index: 5;
+  transform-origin: center center;
+}
+
+/* Posiciones y animaciones */
+.fall1 {
+  left: 8%;
+  animation-name: fall-rotate1;
+  animation-duration: 9s;
+  animation-delay: 0s;
+}
+
+.fall2 {
+  left: 52%;
+  animation-name: fall-rotate2;
+  animation-duration: 11s;
+  animation-delay: 3s;
+}
+
+.fall3 {
+  left: 85%;
+  animation-name: fall-rotate3;
+  animation-duration: 8s;
+  animation-delay: 5s;
+}
+
+/* Animaciones caída y rotación */
+@keyframes fall-rotate1 {
+  0% { top: -180px; opacity: 0; transform: rotate(0deg); }
+  10% { opacity: 1; }
+  50% { transform: rotate(15deg); }
+  90% { top: 110vh; opacity: 1; transform: rotate(30deg); }
+  100% { top: 110vh; opacity: 0; transform: rotate(30deg); }
+}
+
+@keyframes fall-rotate2 {
+  0% { top: -180px; opacity: 0; transform: rotate(0deg); }
+  10% { opacity: 1; }
+  50% { transform: rotate(-15deg); }
+  90% { top: 110vh; opacity: 1; transform: rotate(-30deg); }
+  100% { top: 110vh; opacity: 0; transform: rotate(-30deg); }
+}
+
+@keyframes fall-rotate3 {
+  0% { top: -180px; opacity: 0; transform: rotate(0deg); }
+  10% { opacity: 1; }
+  50% { transform: rotate(10deg); }
+  90% { top: 110vh; opacity: 1; transform: rotate(25deg); }
+  100% { top: 110vh; opacity: 0; transform: rotate(25deg); }
+}
+
+/* ------------------------- */
+/* Pie de página             */
+/* ------------------------- */
+footer {
+  background: linear-gradient(to right, #175732, #D9B26F);
+  color: #ffffff;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid #d9b3c2;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  z-index: 20;
+}
+
+
+
+
+
